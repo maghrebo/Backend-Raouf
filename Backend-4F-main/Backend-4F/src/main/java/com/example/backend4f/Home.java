@@ -28,7 +28,13 @@ public class Home extends HttpServlet {
             out.println("<h1>" + message + "</h1>");
             out.println("</body></html>");
         } else {
-            response.sendError(HttpServletResponse.SC_NOT_FOUND, "Non trovato");
+            //response.sendError(HttpServletResponse.SC_NOT_FOUND, "Non trovato");
+
+            HttpSession session = request.getSession(true);
+            String message = "sbagliato"
+
+             session.setAttribute("error", message);
+            response.sendRedirect("/errore")
         }
 
     }
